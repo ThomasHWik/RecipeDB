@@ -6,7 +6,7 @@ drop table Ingredient;
 create table Recipe (
 	Recipe_id integer,
 	Name varchar(30) not null,
-	Tid integer,
+	Tid integer, /* Time in minutes */
 	Vanskelighetsgrad varchar(8) check (Vanskelighetsgrad in ('Enkel', 'Middels', 'Krevende')),
 	Instructions text,
 	constraint Recipe_PK primary key (Recipe_id)
@@ -22,8 +22,9 @@ create table Ingredient (
 create table RecipeIngredient (
 	Recipe_id integer,
 	Ingredient_id integer,
-	Quantity integer not null,
+	Quantity real not null,
 	Unit varchar(30) not null,
+	Preparation varchar(20),
 	constraint RecipeIngredient_PK primary key (Recipe_id, Ingredient_id),
 	constraint RecipeIngredient_FK1 foreign key (Recipe_id) references Recipe(Recipe_id)
 		on update cascade
