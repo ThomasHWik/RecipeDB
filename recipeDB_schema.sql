@@ -1,13 +1,15 @@
 create table Recipe (
 	Recipe_id integer,
 	Name varchar(30) not null,
+	Tid integer,
+	Vanskelighetsgrad varchar(8) check (Vanskelighetsgrad in ('Enkel', 'Middels', 'Krevende')),
 	Instructions text,
 	constraint Recipe_PK primary key (Recipe_id)
 );
 
 create table Ingredient (
 	Ingredient_id integer,
-	Name varchar(30) not null,
+	Name varchar(30) unique not null,
 	constraint Ingredient_PK primary key (Ingredient_id)
 
 );
