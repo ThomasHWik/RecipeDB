@@ -31,8 +31,13 @@ def get_recipe(id):
 # Route to create a new recipe
 @app.route('/api/recipes', method = ['POST'])
 def create_recipe():
-    new_recipe = request.get_json()
+    new_recipe = request.get_json() # converts JSON data sent in the POST rquest to dictionary
     conn = get_db_connection()
     conn.execute(
-        'INSERT INTO Recipe VALUES ()'
+        '''INSERT INTO Recipe VALUES (Name, Time, Difficulty, Instructions) 
+        VALUES (?, ?, ?, ?)''', 
+        (new_recipe['Name'], new_recipe['Time'], new_recipe['Difficulty'], new_recipe['Instructions'])
     )
+    conn.commit()
+    conn.close()
+    return jsonify({'message': 'Recipe created!'}), 201
