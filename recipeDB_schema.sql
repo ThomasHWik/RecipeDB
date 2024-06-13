@@ -7,7 +7,7 @@ create table Recipe (
 	Recipe_id integer,
 	Name varchar(30) not null,
 	Time integer, /* Time in minutes */
-	Difficulty varchar(8) check (Vanskelighetsgrad in ('Enkel', 'Middels', 'Krevende')),
+	Difficulty varchar(8) check (Difficulty in ('Enkel', 'Middels', 'Krevende')),
 	Instructions text,
 	constraint Recipe_PK primary key (Recipe_id)
 );
