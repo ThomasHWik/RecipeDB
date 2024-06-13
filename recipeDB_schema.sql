@@ -1,3 +1,8 @@
+drop table RecipeIngredient;
+drop table Stock;
+drop table Recipe;
+drop table Ingredient;
+
 create table Recipe (
 	Recipe_id integer,
 	Name varchar(30) not null,
